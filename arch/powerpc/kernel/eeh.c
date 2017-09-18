@@ -157,6 +157,19 @@ static int __init eeh_setup(char *str)
 __setup("eeh=", eeh_setup);
 
 /*
+ * It's not necessary to dump the stack trace when an EEH occours
+ * in the production environment. For debugging, the command line
+ * option "enable_eeh_stacktrace" brings the stack dump back
+ */
+static bool eeh_show_stacktrace;
+static int __init enable_eeh_stacktrace(char *p)
+{
+	eeh_show_stacktrace = true;
+	return 0;
+}
+early_param("enable_eeh_stacktrace", enable_eeh_stacktrace);
+
+/*
  * This routine captures assorted PCI configuration space data
  * for the indicated PCI device, and puts them into a buffer
  * for RTAS error logging.
@@ -407,7 +420,10 @@ static int eeh_phb_check_failure(struct eeh_pe *pe)
 
 	pr_err("EEH: PHB#%x failure detected, location: %s\n",
 		phb_pe->phb->global_number, eeh_pe_loc_get(phb_pe));
-	dump_stack();
+
+	if (eeh_show_stacktrace)
+		dump_stack();
+
 	eeh_send_failure_event(phb_pe);
 
 	return 1;
@@ -504,7 +520,9 @@ int eeh_dev_check_failure(struct eeh_dev *edev)
 				eeh_driver_name(dev), eeh_pci_name(dev));
 			printk(KERN_ERR "EEH: Might be infinite loop in %s driver\n",
 				eeh_driver_name(dev));
-			dump_stack();
+
+			if (eeh_show_stacktrace)
+				dump_stack();
 		}
 		goto dn_unlock;
 	}
@@ -572,7 +590,9 @@ int eeh_dev_check_failure(struct eeh_dev *edev)
 	       pe->phb->global_number, pe->addr);
 	pr_err("EEH: PE location: %s, PHB location: %s\n",
 	       eeh_pe_loc_get(pe), eeh_pe_loc_get(phb_pe));
-	dump_stack();
+
+	if (eeh_show_stacktrace)
+		dump_stack();
 
 	eeh_send_failure_event(pe);
 
