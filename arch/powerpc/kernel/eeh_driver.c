@@ -457,7 +457,7 @@ static void *eeh_add_virt_device(void *data, void *userdata)
 		eeh_pcid_put(dev);
 	}
 
-#ifdef CONFIG_PPC_POWERNV
+#ifdef CONFIG_PCI_IOV
 	pci_iov_add_virtfn(edev->physfn, pdn->vf_index);
 #endif
 	return NULL;
@@ -515,7 +515,7 @@ static void *eeh_rmv_device(void *data, void *userdata)
 		(*removed)++;
 
 	if (edev->physfn) {
-#ifdef CONFIG_PPC_POWERNV
+#ifdef CONFIG_PCI_IOV
 		struct pci_dn *pdn = eeh_dev_to_pdn(edev);
 
 		pci_iov_remove_virtfn(edev->physfn, pdn->vf_index);
