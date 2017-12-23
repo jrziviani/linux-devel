@@ -599,6 +599,9 @@ void __init radix__early_init_mmu(void)
 	radix_init_pgtable();
 	/* Switch to the guard PID before turning on MMU */
 	radix__switch_mmu_context(NULL, &init_mm);
+
+	if (cpu_has_feature(CPU_FTR_HVMODE))
+		tlbiel_all();
 }
 
 void radix__early_init_mmu_secondary(void)
@@ -621,6 +624,9 @@ void radix__early_init_mmu_secondary(void)
 	}
 	radix_init_iamr();
 	radix__switch_mmu_context(NULL, &init_mm);
+
+	if (cpu_has_feature(CPU_FTR_HVMODE))
+		tlbiel_all();
 }
 
 void radix__mmu_cleanup_all(void)
