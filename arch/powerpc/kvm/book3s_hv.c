@@ -2704,7 +2704,11 @@ static noinline void kvmppc_run_core(struct kvmppc_vcore *vc)
 	     ((vc->num_threads > threads_per_subcore) || !on_primary_thread())) ||
 	    (hpt_on_radix && vc->kvm->arch.threads_indep)) {
 		for_each_runnable_thread(i, vcpu, vc) {
-			vcpu->arch.ret = -EBUSY;
+			/* indicate that argument to indep_threads_mode should be N */
+			if (hpt_on_radix && vc->kvm_arch.threads_indep)
+				vcpu->arch.ret = -EINVAL;
+			else
+				vcpu->arch.ret = -EBUSY;
 			kvmppc_remove_runnable(vc, vcpu);
 			wake_up(&vcpu->arch.cpu_run);
 		}
