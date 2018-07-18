@@ -1,4 +1,4 @@
-linux-ibm-gt (4.15.0-1000.1) bionic; urgency=low
+linux-ibm-gt (4.15.0-1000.1~test1) bionic; urgency=low
 
   * Initial package for IBM GT kernel variant.  (LP: #xxxxxx)
 
