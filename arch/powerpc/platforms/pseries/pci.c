@@ -120,6 +120,25 @@ void __init pSeries_final_fixup(void)
 	ppc_md.pcibios_sriov_enable = pseries_pcibios_sriov_enable;
 	ppc_md.pcibios_sriov_disable = pseries_pcibios_sriov_disable;
 #endif
+	list_for_each_entry(hose, &hose_list, list_node) {
+		struct device_node *dn = hose->dn, *nvdn;
+
+		while (1) {
+			dn = of_find_all_nodes(dn);
+			if (!dn)
+				break;
+			nvdn = of_parse_phandle(dn, "ibm,nvlink", 0);
+			if (!nvdn)
+				continue;
+			if (!of_device_is_compatible(nvdn, "ibm,npu-link"))
+				continue;
+			if (!of_device_is_compatible(nvdn->parent,
+						"ibm,power9-npu"))
+				continue;
+			pnv_npu2_init(hose);
+			break;
+		}
+	}
 }
 
 /*
