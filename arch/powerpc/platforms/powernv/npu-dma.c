@@ -975,6 +975,10 @@ struct npu_context *pnv_npu2_init_context(struct pci_dev *gpdev,
 		/* No nvlink associated with this GPU device */
 		return ERR_PTR(-ENODEV);
 
+	/* We only support DR/PR/HV in pnv_npu2_map_lpar_dev() */
+	if (flags & ~(MSR_DR | MSR_PR | MSR_HV))
+		return ERR_PTR(-EINVAL);
+
 	nvlink_dn = of_parse_phandle(npdev->dev.of_node, "ibm,nvlink", 0);
 	if (WARN_ON(of_property_read_u32(nvlink_dn, "ibm,npu-link-index",
 							&nvlink_index)))
