@@ -147,4 +147,9 @@ extern s32 patch__call_kvm_flush_link_stack;
 extern long flush_count_cache;
 extern long kvm_flush_link_stack;
 
+void kvmhv_save_host_pmu(void);
+void kvmhv_load_host_pmu(void);
+void kvmhv_save_guest_pmu(struct kvm_vcpu *vcpu, bool pmu_in_use);
+void kvmhv_load_guest_pmu(struct kvm_vcpu *vcpu);
+
 #endif /* _ASM_POWERPC_ASM_PROTOTYPES_H */
