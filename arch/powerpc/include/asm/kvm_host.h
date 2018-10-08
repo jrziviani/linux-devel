@@ -51,6 +51,11 @@
 #define KVM_MAX_VCPU_ID		KVM_MAX_VCPUS
 #endif /* CONFIG_KVM_BOOK3S_HV_POSSIBLE */
 
+#ifdef CONFIG_KVM_BOOK3S_HV_POSSIBLE
+#include <asm/kvm_book3s_asm.h>
+#define KVM_MAX_NESTED_GUESTS	KVMPPC_NR_LPIDS
+#endif /* CONFIG_KVM_BOOK3S_HV_POSSIBLE */
+
 #define __KVM_HAVE_ARCH_INTC_INITIALIZED
 
 #define KVM_HALT_POLL_NS_DEFAULT 10000	/* 10 us */
@@ -289,6 +294,7 @@ struct kvm_arch {
 	u8 radix;
 	u8 fwnmi_enabled;
 	bool threads_indep;
+	bool nested_enable;
 	pgd_t *pgtable;
 	u64 process_table;
 	struct dentry *debugfs_dir;
@@ -315,6 +321,9 @@ struct kvm_arch {
 #endif
 	struct kvmppc_ops *kvm_ops;
 #ifdef CONFIG_KVM_BOOK3S_HV_POSSIBLE
+	u64 l1_ptcr;
+	int max_nested_lpid;
+	struct kvm_nested_guest *nested_guests[KVM_MAX_NESTED_GUESTS];
 	/* This array can grow quite large, keep it at the end */
 	struct kvmppc_vcore *vcores[KVM_MAX_VCORES];
 #endif
