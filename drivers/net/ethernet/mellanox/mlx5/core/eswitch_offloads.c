@@ -1309,14 +1309,9 @@ int esw_offloads_init(struct mlx5_eswitch *esw, int nvports)
 	int vport;
 	int err;
 
-	/* disable PF RoCE so missed packets don't go through RoCE steering */
-	mlx5_dev_list_lock();
-	mlx5_remove_dev_by_protocol(esw->dev, MLX5_INTERFACE_PROTOCOL_IB);
-	mlx5_dev_list_unlock();
-
 	err = esw_create_offloads_fdb_tables(esw, nvports);
 	if (err)
-		goto create_fdb_err;
+		return err;
 
 	err = esw_create_offloads_table(esw);
 	if (err)
@@ -1352,12 +1347,6 @@ create_fg_err:
 
 create_ft_err:
 	esw_destroy_offloads_fdb_tables(esw);
-
-create_fdb_err:
-	/* enable back PF RoCE */
-	mlx5_dev_list_lock();
-	mlx5_add_dev_by_protocol(esw->dev, MLX5_INTERFACE_PROTOCOL_IB);
-	mlx5_dev_list_unlock();
 
 	return err;
 }
