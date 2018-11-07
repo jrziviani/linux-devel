@@ -2087,3 +2087,9 @@ free_out:
 	kvfree(out);
 	return err;
 }
+
+u8 mlx5_eswitch_mode(struct mlx5_eswitch *esw)
+{
+	return ESW_ALLOWED(esw) ? esw->mode : SRIOV_NONE;
+}
+EXPORT_SYMBOL_GPL(mlx5_eswitch_mode);
