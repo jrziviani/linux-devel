@@ -1,5 +1,5 @@
 /*
- * 
+ *
  * Common boot and setup code.
  *
  * Copyright (C) 2001 PPC64 Team, IBM Corp
