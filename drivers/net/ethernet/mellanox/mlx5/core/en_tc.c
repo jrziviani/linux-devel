@@ -3237,9 +3237,14 @@ void mlx5e_clean_peer_rules(struct net_device *ndev)
 {
 	struct mlx5e_priv *priv = netdev_priv(ndev);
 	struct net_device *peer_netdev = mlx5_lag_get_peer_netdev(priv->mdev);
-	struct mlx5e_priv *peer_priv = netdev_priv(peer_netdev);
-	struct mlx5_eswitch *peer_esw = peer_priv->mdev->priv.eswitch;
+	struct mlx5e_priv *peer_priv;
+	struct mlx5_eswitch *peer_esw;
 
+	if (!peer_netdev)
+		return;
+
+	peer_priv = netdev_priv(peer_netdev);
+	peer_esw = peer_priv->mdev->priv.eswitch;
 
 	if (!peer_esw || peer_esw->mode != SRIOV_OFFLOADS)
 		return;
