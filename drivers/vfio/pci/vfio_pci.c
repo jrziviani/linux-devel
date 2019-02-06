@@ -779,12 +779,6 @@ static long vfio_pci_ioctl(void *device_data,
 			if (ret)
 				return ret;
 
-			if (vdev->region[i].ops->add_capability) {
-				ret = vdev->region[i].ops->add_capability(vdev,
-						&vdev->region[i], &caps);
-				if (ret)
-					return ret;
-			}
 		}
 		}
 
