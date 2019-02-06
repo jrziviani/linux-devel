@@ -47,7 +47,6 @@
 #include <asm/fadump.h>
 #include <asm/vio.h>
 #include <asm/tce.h>
-#include <asm/mmu_context.h>
 
 #define DBG(...)
 
@@ -994,17 +993,15 @@ int iommu_tce_check_gpa(unsigned long page_shift, unsigned long gpa)
 }
 EXPORT_SYMBOL_GPL(iommu_tce_check_gpa);
 
-long iommu_tce_xchg(struct mm_struct *mm, struct iommu_table *tbl,
-		unsigned long entry, unsigned long *hpa,
-		enum dma_data_direction *direction)
+long iommu_tce_xchg(struct iommu_table *tbl, unsigned long entry,
+		unsigned long *hpa, enum dma_data_direction *direction)
 {
 	long ret;
 
 	ret = tbl->it_ops->exchange(tbl, entry, hpa, direction);
 
 	if (!ret && ((*direction == DMA_FROM_DEVICE) ||
-				(*direction == DMA_BIDIRECTIONAL)) &&
-			!mm_iommu_is_hpa(mm, *hpa))
+			(*direction == DMA_BIDIRECTIONAL)))
 		SetPageDirty(pfn_to_page(*hpa >> PAGE_SHIFT));
 
 	/* if (unlikely(ret))
