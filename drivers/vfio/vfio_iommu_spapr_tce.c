@@ -149,9 +149,9 @@ static long tce_iommu_prereg_free(struct tce_container *container,
 static long tce_iommu_unregister_pages(struct tce_container *container,
 		__u64 vaddr, __u64 size)
 {
-	long ret = -ENOENT;
 	struct mm_iommu_table_group_mem_t *mem;
 	struct tce_iommu_prereg *tcemem;
+	bool found = false;
 
 	if ((vaddr & ~PAGE_MASK) || (size & ~PAGE_MASK))
 		return -EINVAL;
@@ -162,14 +162,15 @@ static long tce_iommu_unregister_pages(struct tce_container *container,
 
 	list_for_each_entry(tcemem, &container->prereg_list, next) {
 		if (tcemem->mem == mem) {
-			ret = tce_iommu_prereg_free(container, tcemem);
+			found = true;
 			break;
 		}
 	}
 
-	mm_iommu_put(container->mm, mem);
+	if (!found)
+		return -ENOENT;
 
-	return ret;
+	return tce_iommu_prereg_free(container, tcemem);
 }
 
 static long tce_iommu_register_pages(struct tce_container *container,
@@ -187,16 +188,14 @@ static long tce_iommu_register_pages(struct tce_container *container,
 	mem = mm_iommu_find(container->mm, vaddr, entries);
 	if (mem) {
 		list_for_each_entry(tcemem, &container->prereg_list, next) {
-			if (tcemem->mem == mem) {
-				mm_iommu_put(container->mm, mem);
+			if (tcemem->mem == mem)
 				return -EBUSY;
-			}
 		}
-	} else {
-		ret = mm_iommu_new(container->mm, vaddr, entries, &mem);
-		if (ret)
-			return ret;
 	}
+
+	ret = mm_iommu_get(container->mm, vaddr, entries, &mem);
+	if (ret)
+		return ret;
 
 	tcemem = kzalloc(sizeof(*tcemem), GFP_KERNEL);
 	if (!tcemem) {
