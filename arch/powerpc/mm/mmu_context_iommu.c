@@ -127,8 +127,7 @@ static int mm_iommu_move_page_from_cma(struct page *page)
 	return 0;
 }
 
-static long mm_iommu_do_alloc(struct mm_struct *mm, unsigned long ua,
-		unsigned long entries,
+long mm_iommu_get(struct mm_struct *mm, unsigned long ua, unsigned long entries,
 		struct mm_iommu_table_group_mem_t **pmem)
 {
 	struct mm_iommu_table_group_mem_t *mem;
@@ -142,7 +141,8 @@ static long mm_iommu_do_alloc(struct mm_struct *mm, unsigned long ua,
 	list_for_each_entry_rcu(mem, &mm->context.iommu_group_mem_list,
 			next) {
 		if ((mem->ua == ua) && (mem->entries == entries)) {
-			ret = -EBUSY;
+			++mem->used;
+			*pmem = mem;
 			goto unlock_exit;
 		}
 
@@ -250,13 +250,7 @@ unlock_exit:
 
 	return ret;
 }
-
-long mm_iommu_new(struct mm_struct *mm, unsigned long ua, unsigned long entries,
-		struct mm_iommu_table_group_mem_t **pmem)
-{
-	return mm_iommu_do_alloc(mm, ua, entries, pmem);
-}
-EXPORT_SYMBOL_GPL(mm_iommu_new);
+EXPORT_SYMBOL_GPL(mm_iommu_get);
 
 static void mm_iommu_unpin(struct mm_iommu_table_group_mem_t *mem)
 {
@@ -377,17 +371,12 @@ struct mm_iommu_table_group_mem_t *mm_iommu_find(struct mm_struct *mm,
 {
 	struct mm_iommu_table_group_mem_t *mem, *ret = NULL;
 
-	mutex_lock(&mem_list_mutex);
-
 	list_for_each_entry_rcu(mem, &mm->context.iommu_group_mem_list, next) {
 		if ((mem->ua == ua) && (mem->entries == entries)) {
 			ret = mem;
-			++mem->used;
 			break;
 		}
 	}
-
-	mutex_unlock(&mem_list_mutex);
 
 	return ret;
 }
