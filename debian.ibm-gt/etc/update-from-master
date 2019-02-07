@@ -87,10 +87,13 @@ current_subject=$(git --no-pager log --format=%s "${current_commit}" -1)
 print_var current_commit " (\"${current_subject}\")"
 
 # do the rebase
-if [ "${master_commit}" = "${current_commit}" ] ; then
-    echo "Branch is already up to date" >&2
-    exit 1
+if [ "${master_commit}" != "${current_commit}" ] ; then
+	git rebase --onto "${master_commit}" "${current_commit}"
+else
+	echo "Branch is already up to date"
+	if [ -z "${SKIP_REBASE_IF_UPTODATE:-}" ] ; then
+		exit 1
+	fi
 fi
-git rebase --onto "${master_commit}" "${current_commit}"
 
 trap - EXIT INT TERM HUP
