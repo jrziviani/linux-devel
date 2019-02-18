@@ -1586,6 +1586,8 @@ static void pnv_ioda_setup_vf_PE(struct pci_dev *pdev, u16 num_vfs)
 		mutex_unlock(&phb->ioda.pe_list_mutex);
 
 		pnv_pci_ioda2_setup_dma_pe(phb, pe);
+		iommu_register_group(&pe->table_group,
+				pe->phb->hose->global_number, pe->pe_number);
 		pnv_ioda_setup_bus_iommu_group(pe, &pe->table_group, NULL);
 	}
 }
