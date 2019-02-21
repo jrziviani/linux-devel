@@ -2803,9 +2803,6 @@ __mlx5e_add_fdb_flow(struct mlx5e_priv *priv,
 	if (err)
 		goto err_free;
 
-	if (flow_flags & MLX5E_TC_FLOW_EGRESS && !(flow->esw_attr->action & MLX5_FLOW_CONTEXT_ACTION_DECAP))
-		return -EOPNOTSUPP;
-
 	flow->esw_attr->in_rep = in_rep;
 	flow->esw_attr->in_mdev = in_mdev;
 	flow->esw_attr->chain = f->common.chain_index;
