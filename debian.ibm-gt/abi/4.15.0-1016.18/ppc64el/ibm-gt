@@ -8247,6 +8247,7 @@ EXPORT_SYMBOL vmlinux 0x00000000	on_each_cpu_cond
 EXPORT_SYMBOL vmlinux 0x00000000	on_each_cpu_mask
 EXPORT_SYMBOL vmlinux 0x00000000	oops_in_progress
 EXPORT_SYMBOL vmlinux 0x00000000	opal_event_request
+EXPORT_SYMBOL vmlinux 0x00000000	opal_nx_coproc_init
 EXPORT_SYMBOL vmlinux 0x00000000	opal_unlock_from_suspend
 EXPORT_SYMBOL vmlinux 0x00000000	open_exec
 EXPORT_SYMBOL vmlinux 0x00000000	out_of_line_wait_on_atomic_t
@@ -8717,8 +8718,6 @@ EXPORT_SYMBOL vmlinux 0x00000000	quota_send_warning
 EXPORT_SYMBOL vmlinux 0x00000000	radix__flush_all_mm
 EXPORT_SYMBOL vmlinux 0x00000000	radix__flush_pmd_tlb_range
 EXPORT_SYMBOL vmlinux 0x00000000	radix__flush_tlb_kernel_range
-EXPORT_SYMBOL vmlinux 0x00000000	radix__flush_tlb_lpid
-EXPORT_SYMBOL vmlinux 0x00000000	radix__flush_tlb_lpid_va
 EXPORT_SYMBOL vmlinux 0x00000000	radix__flush_tlb_mm
 EXPORT_SYMBOL vmlinux 0x00000000	radix__flush_tlb_page
 EXPORT_SYMBOL vmlinux 0x00000000	radix__flush_tlb_pwc
@@ -11715,7 +11714,6 @@ EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_fops_get_context
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_free_afu_irqs
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_get_context
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_get_fd
-EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_get_max_irqs_per_process
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_get_priv
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_map_afu_irq
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_pci_to_afu
@@ -11728,7 +11726,6 @@ EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_read_adapter_vpd
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_release_context
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_set_driver_ops
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_set_master
-EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_set_max_irqs_per_process
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_set_priv
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_start_context
 EXPORT_SYMBOL_GPL drivers/misc/cxl/cxl 0x00000000	cxl_start_work
@@ -15574,6 +15571,9 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_rpm_suspend
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_suspend_resume
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_tcp_send_reset
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_unmap
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_vfio_pci_npu2_mmap
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_vfio_pci_nvgpu_mmap
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_vfio_pci_nvgpu_mmap_fault
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_wbc_writepage
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_xdp_exception
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__tracepoint_xhci_dbg_quirks
@@ -16311,9 +16311,6 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	cs47l24_spi_regmap
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	current_is_async
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	cxl_afu_get
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	cxl_afu_put
-EXPORT_SYMBOL_GPL vmlinux 0x00000000	cxl_next_msi_hwirq
-EXPORT_SYMBOL_GPL vmlinux 0x00000000	cxl_pci_associate_default_context
-EXPORT_SYMBOL_GPL vmlinux 0x00000000	cxl_pci_disable_device
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	cxl_update_properties
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	d_exchange
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	d_walk
@@ -17692,8 +17689,8 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	memstart_addr
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	metadata_dst_alloc
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	metadata_dst_alloc_percpu
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	metadata_dst_free_percpu
-EXPORT_SYMBOL_GPL vmlinux 0x00000000	mm_iommu_find
-EXPORT_SYMBOL_GPL vmlinux 0x00000000	mm_iommu_is_hpa
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	mm_iommu_get
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	mm_iommu_is_devmem
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	mm_iommu_lookup
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	mm_iommu_mapped_dec
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	mm_iommu_mapped_inc
@@ -17998,11 +17995,13 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_async_get_token_interruptible
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_async_release_token
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_async_wait_response
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_async_wait_response_interruptible
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_check_token
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_error_code
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_flash_erase
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_flash_read
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_flash_write
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_get_sensor_data
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_get_sensor_data_u64
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_i2c_request
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_int_eoi
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	opal_int_set_mfrr
@@ -18426,6 +18425,7 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	pm_wakeup_ws_event
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pm_wq
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pnv_get_supported_cpuidle_states
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pnv_npu2_map_lpar_dev
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	pnv_npu2_unmap_lpar_dev
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pnv_ocxl_alloc_xive_irq
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pnv_ocxl_free_xive_irq
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pnv_ocxl_get_actag
@@ -18538,6 +18538,10 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	pwm_set_chip_data
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pwmchip_add
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pwmchip_add_with_polarity
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pwmchip_remove
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__flush_pwc_lpid
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__flush_tlb_lpid_page
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__local_flush_tlb_lpid
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__local_flush_tlb_lpid_guest
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix_kvm_prefetch_workaround
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	ras_userspace_consumers
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	raw_abort
@@ -19057,6 +19061,7 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	sed_ioctl
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	seg6_do_srh_encap
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	seg6_do_srh_inline
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	selinux_is_enabled
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	sensor_group_enable
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	seq_open_net
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	seq_release_net
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	serdev_controller_add
