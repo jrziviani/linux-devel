@@ -10208,6 +10208,7 @@ EXPORT_SYMBOL_GPL arch/powerpc/kvm/kvm 0x00000000	kvmppc_xics_hcall
 EXPORT_SYMBOL_GPL arch/powerpc/kvm/kvm 0x00000000	kvmppc_xics_rm_complete
 EXPORT_SYMBOL_GPL arch/powerpc/kvm/kvm 0x00000000	kvmppc_xics_set_mapped
 EXPORT_SYMBOL_GPL arch/powerpc/kvm/kvm 0x00000000	kvmppc_xive_clr_mapped
+EXPORT_SYMBOL_GPL arch/powerpc/kvm/kvm 0x00000000	kvmppc_xive_push_vcpu
 EXPORT_SYMBOL_GPL arch/powerpc/kvm/kvm 0x00000000	kvmppc_xive_set_mapped
 EXPORT_SYMBOL_GPL arch/powerpc/kvm/kvm 0x00000000	mark_page_dirty
 EXPORT_SYMBOL_GPL arch/powerpc/kvm/kvm 0x00000000	vcpu_load
@@ -15439,6 +15440,7 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	__irq_domain_add
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__irq_domain_alloc_fwnode
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__irq_set_handler
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__kthread_init_worker
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	__kvmhv_vcpu_entry_p9
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__list_lru_init
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__lock_page_killable
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__mmc_send_status
@@ -15600,6 +15602,8 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	__xive_vm_h_ipi
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__xive_vm_h_ipoll
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	__xive_vm_h_xirr
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	_copy_from_iter_flushcache
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	_kvmppc_restore_tm_pr
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	_kvmppc_save_tm_pr
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	ablkcipher_walk_done
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	ablkcipher_walk_phys
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	access_process_vm
@@ -17550,6 +17554,9 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvm_alloc_hpt_cma
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvm_free_hpt_cma
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvm_hv_vm_activated
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvm_hv_vm_deactivated
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmhv_load_guest_pmu
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmhv_load_host_pmu
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmhv_save_guest_pmu
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_add_revmap_chain
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_clear_ref_hpte
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_do_h_enter
@@ -17557,11 +17564,17 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_do_h_remove
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_entry_trampoline
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_find_table
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_h_get_tce
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_h_set_dabr
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_h_set_xdabr
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_hcall_impl_hv_realmode
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_host_rm_ops_hv
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_hv_entry_trampoline
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_hwrng_present
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_invalidate_hpte
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_restore_tm_hv
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_save_tm_hv
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_subcore_enter_guest
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_subcore_exit_guest
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_tce_put
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_tce_to_ua
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	kvmppc_update_dirty_map
@@ -17759,6 +17772,7 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	mpi_read_raw_from_sgl
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	mpi_write_to_sgl
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	mpic_subsys
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	msi_desc_to_pci_sysdata
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	msr_check_and_set
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	mutex_lock_io
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	n_tty_inherit_ops
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	name_to_dev_t
@@ -18543,6 +18557,7 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	pwmchip_add
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pwmchip_add_with_polarity
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pwmchip_remove
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__flush_pwc_lpid
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__flush_tlb_lpid
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__flush_tlb_lpid_page
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__local_flush_tlb_lpid
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	radix__local_flush_tlb_lpid_guest
@@ -20019,6 +20034,7 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	xive_native_enable_vp
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	xive_native_free_irq
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	xive_native_free_vp_block
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	xive_native_get_vp_info
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	xive_native_has_single_escalation
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	xive_native_populate_irq_data
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	xive_native_sync_source
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	xive_tima
