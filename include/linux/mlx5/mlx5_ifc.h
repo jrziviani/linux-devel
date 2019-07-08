@@ -314,7 +314,9 @@ struct mlx5_ifc_flow_table_prop_layout_bits {
 	u8         reserved_at_9[0x1];
 	u8         pop_vlan[0x1];
 	u8         push_vlan[0x1];
-	u8         reserved_at_c[0x14];
+	u8         reserved_at_c[0x7];
+	u8	   reformat_l2_to_l3_tunnel[0x1];
+	u8	   reserved_at_e[0xc];
 
 	u8         reserved_at_20[0x2];
 	u8         log_max_ft_size[0x6];
@@ -8868,6 +8870,11 @@ struct mlx5_ifc_destroy_vport_lag_in_bits {
 	u8         op_mod[0x10];
 
 	u8         reserved_at_40[0x40];
+};
+
+enum mlx5_reformat_type {
+	MLX5_ENCAP_TYPE_VXLAN = 0x0,
+	MLX5_ENCAP_TYPE_L2_TO_L3 = 0x4
 };
 
 #endif /* MLX5_IFC_H */

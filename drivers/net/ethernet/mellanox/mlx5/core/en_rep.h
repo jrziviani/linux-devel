@@ -121,7 +121,7 @@ struct mlx5e_encap_entry {
 	unsigned char h_dest[ETH_ALEN];	/* destination eth addr	*/
 
 	struct net_device *out_dev;
-	int tunnel_type;
+	enum mlx5_reformat_type reformat_type;
 	u8 flags;
 	char *encap_header;
 	int encap_size;
