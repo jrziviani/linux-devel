@@ -142,7 +142,7 @@ void mlx5_dev_list_lock(void);
 void mlx5_dev_list_unlock(void);
 int mlx5_dev_list_trylock(void);
 int mlx5_encap_alloc(struct mlx5_core_dev *dev,
-		     int header_type,
+		     enum mlx5_reformat_type reformat_type,
 		     size_t size,
 		     void *encap_header,
 		     u32 *encap_id);

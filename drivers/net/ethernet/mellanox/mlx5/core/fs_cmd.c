@@ -507,7 +507,7 @@ void mlx5_cmd_fc_bulk_get(struct mlx5_core_dev *dev,
 }
 
 int mlx5_encap_alloc(struct mlx5_core_dev *dev,
-		     int header_type,
+		     enum mlx5_reformat_type reformat_type,
 		     size_t size,
 		     void *encap_header,
 		     u32 *encap_id)
@@ -539,7 +539,7 @@ int mlx5_encap_alloc(struct mlx5_core_dev *dev,
 	MLX5_SET(alloc_encap_header_in, in, opcode,
 		 MLX5_CMD_OP_ALLOC_ENCAP_HEADER);
 	MLX5_SET(encap_header_in, encap_header_in, encap_header_size, size);
-	MLX5_SET(encap_header_in, encap_header_in, header_type, header_type);
+	MLX5_SET(encap_header_in, encap_header_in, header_type, reformat_type);
 	memcpy(header, encap_header, size);
 
 	memset(out, 0, sizeof(out));
