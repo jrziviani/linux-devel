@@ -2505,6 +2505,8 @@ EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_co
 EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_core_event_listener_register
 EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_core_event_listener_unregister
 EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_core_flush_owq
+EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_core_fw_flash_end
+EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_core_fw_flash_start
 EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_core_lag_mapping_clear
 EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_core_lag_mapping_get
 EXPORT_SYMBOL drivers/net/ethernet/mellanox/mlxsw/mlxsw_core 0x00000000	mlxsw_core_lag_mapping_set
@@ -4595,6 +4597,7 @@ EXPORT_SYMBOL net/ceph/libceph 0x00000000	ceph_release_page_vector
 EXPORT_SYMBOL net/ceph/libceph 0x00000000	ceph_release_string
 EXPORT_SYMBOL net/ceph/libceph 0x00000000	ceph_str_hash
 EXPORT_SYMBOL net/ceph/libceph 0x00000000	ceph_str_hash_name
+EXPORT_SYMBOL net/ceph/libceph 0x00000000	ceph_wait_for_latest_osdmap
 EXPORT_SYMBOL net/ceph/libceph 0x00000000	ceph_zero_page_vector_range
 EXPORT_SYMBOL net/ceph/libceph 0x00000000	libceph_compatible
 EXPORT_SYMBOL net/ceph/libceph 0x00000000	osd_req_op_alloc_hint_init
@@ -5414,6 +5417,7 @@ EXPORT_SYMBOL vmlinux 0x00000000	__hw_addr_sync_dev
 EXPORT_SYMBOL vmlinux 0x00000000	__hw_addr_unsync
 EXPORT_SYMBOL vmlinux 0x00000000	__hw_addr_unsync_dev
 EXPORT_SYMBOL vmlinux 0x00000000	__i2c_transfer
+EXPORT_SYMBOL vmlinux 0x00000000	__icmp_send
 EXPORT_SYMBOL vmlinux 0x00000000	__inc_node_page_state
 EXPORT_SYMBOL vmlinux 0x00000000	__inc_zone_page_state
 EXPORT_SYMBOL vmlinux 0x00000000	__inet6_lookup_established
@@ -5822,6 +5826,7 @@ EXPORT_SYMBOL vmlinux 0x00000000	backlight_force_update
 EXPORT_SYMBOL vmlinux 0x00000000	backlight_register_notifier
 EXPORT_SYMBOL vmlinux 0x00000000	backlight_unregister_notifier
 EXPORT_SYMBOL vmlinux 0x00000000	balance_dirty_pages_ratelimited
+EXPORT_SYMBOL vmlinux 0x00000000	bcmp
 EXPORT_SYMBOL vmlinux 0x00000000	bd_set_size
 EXPORT_SYMBOL vmlinux 0x00000000	bdev_dax_pgoff
 EXPORT_SYMBOL vmlinux 0x00000000	bdev_read_only
@@ -6422,7 +6427,6 @@ EXPORT_SYMBOL vmlinux 0x00000000	devm_ioremap_wc
 EXPORT_SYMBOL vmlinux 0x00000000	devm_iounmap
 EXPORT_SYMBOL vmlinux 0x00000000	devm_kvasprintf
 EXPORT_SYMBOL vmlinux 0x00000000	devm_memremap
-EXPORT_SYMBOL vmlinux 0x00000000	devm_memremap_pages
 EXPORT_SYMBOL vmlinux 0x00000000	devm_memunmap
 EXPORT_SYMBOL vmlinux 0x00000000	devm_mfd_add_devices
 EXPORT_SYMBOL vmlinux 0x00000000	devm_nvmem_cell_put
@@ -6719,6 +6723,7 @@ EXPORT_SYMBOL vmlinux 0x00000000	filemap_check_errors
 EXPORT_SYMBOL vmlinux 0x00000000	filemap_fault
 EXPORT_SYMBOL vmlinux 0x00000000	filemap_fdatawait_keep_errors
 EXPORT_SYMBOL vmlinux 0x00000000	filemap_fdatawait_range
+EXPORT_SYMBOL vmlinux 0x00000000	filemap_fdatawait_range_keep_errors
 EXPORT_SYMBOL vmlinux 0x00000000	filemap_fdatawrite
 EXPORT_SYMBOL vmlinux 0x00000000	filemap_fdatawrite_range
 EXPORT_SYMBOL vmlinux 0x00000000	filemap_flush
@@ -7030,9 +7035,6 @@ EXPORT_SYMBOL vmlinux 0x00000000	hex_to_bin
 EXPORT_SYMBOL vmlinux 0x00000000	high_memory
 EXPORT_SYMBOL vmlinux 0x00000000	hmm_device_new
 EXPORT_SYMBOL vmlinux 0x00000000	hmm_device_put
-EXPORT_SYMBOL vmlinux 0x00000000	hmm_devmem_add
-EXPORT_SYMBOL vmlinux 0x00000000	hmm_devmem_add_resource
-EXPORT_SYMBOL vmlinux 0x00000000	hmm_devmem_remove
 EXPORT_SYMBOL vmlinux 0x00000000	hmm_mirror_register
 EXPORT_SYMBOL vmlinux 0x00000000	hmm_mirror_unregister
 EXPORT_SYMBOL vmlinux 0x00000000	hmm_vma_alloc_locked_page
@@ -7079,7 +7081,6 @@ EXPORT_SYMBOL vmlinux 0x00000000	i8042_unlock_chip
 EXPORT_SYMBOL vmlinux 0x00000000	i8253_lock
 EXPORT_SYMBOL vmlinux 0x00000000	icmp_err_convert
 EXPORT_SYMBOL vmlinux 0x00000000	icmp_global_allow
-EXPORT_SYMBOL vmlinux 0x00000000	icmp_send
 EXPORT_SYMBOL vmlinux 0x00000000	icmpv6_err_convert
 EXPORT_SYMBOL vmlinux 0x00000000	icmpv6_send
 EXPORT_SYMBOL vmlinux 0x00000000	ida_destroy
@@ -7171,6 +7172,11 @@ EXPORT_SYMBOL vmlinux 0x00000000	inet_dgram_ops
 EXPORT_SYMBOL vmlinux 0x00000000	inet_frag_destroy
 EXPORT_SYMBOL vmlinux 0x00000000	inet_frag_find
 EXPORT_SYMBOL vmlinux 0x00000000	inet_frag_kill
+EXPORT_SYMBOL vmlinux 0x00000000	inet_frag_pull_head
+EXPORT_SYMBOL vmlinux 0x00000000	inet_frag_queue_insert
+EXPORT_SYMBOL vmlinux 0x00000000	inet_frag_rbtree_purge
+EXPORT_SYMBOL vmlinux 0x00000000	inet_frag_reasm_finish
+EXPORT_SYMBOL vmlinux 0x00000000	inet_frag_reasm_prepare
 EXPORT_SYMBOL vmlinux 0x00000000	inet_frags_exit_net
 EXPORT_SYMBOL vmlinux 0x00000000	inet_frags_fini
 EXPORT_SYMBOL vmlinux 0x00000000	inet_frags_init
@@ -7326,10 +7332,7 @@ EXPORT_SYMBOL vmlinux 0x00000000	ip4_datagram_connect
 EXPORT_SYMBOL vmlinux 0x00000000	ip6_dst_alloc
 EXPORT_SYMBOL vmlinux 0x00000000	ip6_dst_hoplimit
 EXPORT_SYMBOL vmlinux 0x00000000	ip6_err_gen_icmpv6_unreach
-EXPORT_SYMBOL vmlinux 0x00000000	ip6_expire_frag_queue
 EXPORT_SYMBOL vmlinux 0x00000000	ip6_find_1stfragopt
-EXPORT_SYMBOL vmlinux 0x00000000	ip6_frag_init
-EXPORT_SYMBOL vmlinux 0x00000000	ip6_rhash_params
 EXPORT_SYMBOL vmlinux 0x00000000	ip6_route_me_harder
 EXPORT_SYMBOL vmlinux 0x00000000	ip6_xmit
 EXPORT_SYMBOL vmlinux 0x00000000	ip6tun_encaps
@@ -7433,6 +7436,8 @@ EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_init_inode
 EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_init_jbd_inode
 EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_inode_add_wait
 EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_inode_add_write
+EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_inode_ranged_wait
+EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_inode_ranged_write
 EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_invalidatepage
 EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_load
 EXPORT_SYMBOL vmlinux 0x00000000	jbd2_journal_lock_updates
@@ -9417,6 +9422,7 @@ EXPORT_SYMBOL vmlinux 0x00000000	strchrnul
 EXPORT_SYMBOL vmlinux 0x00000000	strcmp
 EXPORT_SYMBOL vmlinux 0x00000000	strcpy
 EXPORT_SYMBOL vmlinux 0x00000000	strcspn
+EXPORT_SYMBOL vmlinux 0x00000000	stream_open
 EXPORT_SYMBOL vmlinux 0x00000000	strict_msr_control
 EXPORT_SYMBOL vmlinux 0x00000000	strim
 EXPORT_SYMBOL vmlinux 0x00000000	string_escape_mem
@@ -12761,6 +12767,7 @@ EXPORT_SYMBOL_GPL drivers/staging/comedi/comedi 0x00000000	comedi_buf_write_allo
 EXPORT_SYMBOL_GPL drivers/staging/comedi/comedi 0x00000000	comedi_buf_write_free
 EXPORT_SYMBOL_GPL drivers/staging/comedi/comedi 0x00000000	comedi_buf_write_samples
 EXPORT_SYMBOL_GPL drivers/staging/comedi/comedi 0x00000000	comedi_bytes_per_scan
+EXPORT_SYMBOL_GPL drivers/staging/comedi/comedi 0x00000000	comedi_bytes_per_scan_cmd
 EXPORT_SYMBOL_GPL drivers/staging/comedi/comedi 0x00000000	comedi_check_chanlist
 EXPORT_SYMBOL_GPL drivers/staging/comedi/comedi 0x00000000	comedi_dev_get_from_minor
 EXPORT_SYMBOL_GPL drivers/staging/comedi/comedi 0x00000000	comedi_dev_put
@@ -13018,6 +13025,7 @@ EXPORT_SYMBOL_GPL drivers/staging/speakup/speakup 0x00000000	synth_buffer_empty
 EXPORT_SYMBOL_GPL drivers/staging/speakup/speakup 0x00000000	synth_buffer_getc
 EXPORT_SYMBOL_GPL drivers/staging/speakup/speakup 0x00000000	synth_buffer_peek
 EXPORT_SYMBOL_GPL drivers/staging/speakup/speakup 0x00000000	synth_buffer_skip_nonlatin1
+EXPORT_SYMBOL_GPL drivers/staging/speakup/speakup 0x00000000	synth_current
 EXPORT_SYMBOL_GPL drivers/staging/speakup/speakup 0x00000000	synth_printf
 EXPORT_SYMBOL_GPL drivers/staging/speakup/speakup 0x00000000	synth_putwc
 EXPORT_SYMBOL_GPL drivers/staging/speakup/speakup 0x00000000	synth_putwc_s
@@ -13443,6 +13451,7 @@ EXPORT_SYMBOL_GPL drivers/vhost/vhost 0x00000000	vhost_disable_notify
 EXPORT_SYMBOL_GPL drivers/vhost/vhost 0x00000000	vhost_discard_vq_desc
 EXPORT_SYMBOL_GPL drivers/vhost/vhost 0x00000000	vhost_enable_notify
 EXPORT_SYMBOL_GPL drivers/vhost/vhost 0x00000000	vhost_enqueue_msg
+EXPORT_SYMBOL_GPL drivers/vhost/vhost 0x00000000	vhost_exceeds_weight
 EXPORT_SYMBOL_GPL drivers/vhost/vhost 0x00000000	vhost_get_vq_desc
 EXPORT_SYMBOL_GPL drivers/vhost/vhost 0x00000000	vhost_has_work
 EXPORT_SYMBOL_GPL drivers/vhost/vhost 0x00000000	vhost_init_device_iotlb
@@ -13604,6 +13613,7 @@ EXPORT_SYMBOL_GPL fs/nfs/nfs 0x00000000	nfs_may_open
 EXPORT_SYMBOL_GPL fs/nfs/nfs 0x00000000	nfs_mkdir
 EXPORT_SYMBOL_GPL fs/nfs/nfs 0x00000000	nfs_mknod
 EXPORT_SYMBOL_GPL fs/nfs/nfs 0x00000000	nfs_net_id
+EXPORT_SYMBOL_GPL fs/nfs/nfs 0x00000000	nfs_open
 EXPORT_SYMBOL_GPL fs/nfs/nfs 0x00000000	nfs_pageio_init_read
 EXPORT_SYMBOL_GPL fs/nfs/nfs 0x00000000	nfs_pageio_init_write
 EXPORT_SYMBOL_GPL fs/nfs/nfs 0x00000000	nfs_pageio_resend
@@ -13869,7 +13879,6 @@ EXPORT_SYMBOL_GPL net/bluetooth/bluetooth 0x00000000	l2cap_chan_put
 EXPORT_SYMBOL_GPL net/bluetooth/bluetooth 0x00000000	l2cap_chan_send
 EXPORT_SYMBOL_GPL net/bluetooth/bluetooth 0x00000000	l2cap_chan_set_defaults
 EXPORT_SYMBOL_GPL net/bluetooth/hidp/hidp 0x00000000	hidp_hid_driver
-EXPORT_SYMBOL_GPL net/bridge/br_netfilter 0x00000000	br_netfilter_enable
 EXPORT_SYMBOL_GPL net/bridge/bridge 0x00000000	br_dev_queue_push_xmit
 EXPORT_SYMBOL_GPL net/bridge/bridge 0x00000000	br_forward
 EXPORT_SYMBOL_GPL net/bridge/bridge 0x00000000	br_forward_finish
@@ -14183,6 +14192,7 @@ EXPORT_SYMBOL_GPL net/netfilter/nf_conntrack 0x00000000	nf_ct_expect_unregister_
 EXPORT_SYMBOL_GPL net/netfilter/nf_conntrack 0x00000000	nf_ct_extend_register
 EXPORT_SYMBOL_GPL net/netfilter/nf_conntrack 0x00000000	nf_ct_extend_unregister
 EXPORT_SYMBOL_GPL net/netfilter/nf_conntrack 0x00000000	nf_ct_free_hashtable
+EXPORT_SYMBOL_GPL net/netfilter/nf_conntrack 0x00000000	nf_ct_get_id
 EXPORT_SYMBOL_GPL net/netfilter/nf_conntrack 0x00000000	nf_ct_get_tuple
 EXPORT_SYMBOL_GPL net/netfilter/nf_conntrack 0x00000000	nf_ct_get_tuplepr
 EXPORT_SYMBOL_GPL net/netfilter/nf_conntrack 0x00000000	nf_ct_helper_expectfn_find_by_name
@@ -16607,6 +16617,7 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	devm_led_classdev_unregister
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	devm_led_trigger_register
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	devm_mdiobus_alloc_size
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	devm_mdiobus_free
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	devm_memremap_pages
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	devm_nsio_disable
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	devm_nsio_enable
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	devm_nvdimm_memremap
@@ -17160,6 +17171,8 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	hash_digest_size
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	hash_page
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	hash_page_mm
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	have_governor_per_policy
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	hmm_devmem_add
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	hmm_devmem_add_resource
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	housekeeping_affine
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	housekeeping_any_cpu
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	housekeeping_cpumask
@@ -18541,7 +18554,6 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	property_entries_dup
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	property_entries_free
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pseries_ioei_notifier_list
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pskb_put
-EXPORT_SYMBOL_GPL vmlinux 0x00000000	pstore_cannot_block_path
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pstore_register
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	pstore_unregister
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	ptp_classify_raw
@@ -19010,6 +19022,7 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	sched_setattr
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sched_setscheduler
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sched_setscheduler_nocheck
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sched_show_task
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	sched_smt_present
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	schedule_hrtimeout
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	schedule_hrtimeout_range
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	scom_controller
@@ -19062,6 +19075,10 @@ EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_readw
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_register_driver
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_release_host
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_release_irq
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_retune_crc_disable
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_retune_crc_enable
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_retune_hold_now
+EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_retune_release
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_run_irqs
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_set_block_size
 EXPORT_SYMBOL_GPL vmlinux 0x00000000	sdio_set_host_pm_flags
