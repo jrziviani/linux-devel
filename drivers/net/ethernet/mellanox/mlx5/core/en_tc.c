@@ -2278,6 +2278,7 @@ static void gen_vxlan_header_ipv4(struct net_device *out_dev,
 static void gen_mpls_over_udp_header_ipv4(struct net_device *out_dev,
 					  void *buf, int encap_size,
 					  unsigned char h_dest[ETH_ALEN],
+					  u8 tos,
 					  int ttl,
 					  __be32 daddr,
 					  __be32 saddr,
@@ -2299,6 +2300,7 @@ static void gen_mpls_over_udp_header_ipv4(struct net_device *out_dev,
 	ip->saddr = saddr;
 
 	ip->ttl = ttl;
+	ip->tos = tos;
 	ip->protocol = IPPROTO_UDP;
 	ip->version = 0x4;
 	ip->ihl = 0x5;
@@ -2451,7 +2453,7 @@ static int mlx5e_create_encap_header_ipv4(struct mlx5e_priv *priv,
 		break;
 	case MLX5_ENCAP_TYPE_L2_TO_L3:
 		gen_mpls_over_udp_header_ipv4(out_dev, encap_header,
-					      ipv4_encap_size, e->h_dest, ttl,
+					      ipv4_encap_size, e->h_dest, tos, ttl,
 					      fl4.daddr, fl4.saddr,
 					      tun_key->tp_dst,
 					      mpls_attr->mpls_label);
