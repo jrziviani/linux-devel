@@ -61,6 +61,8 @@ act_mirred
 act_nat
 act_pedit
 act_police
+act_pop
+act_push
 act_sample
 act_simple
 act_skbedit
